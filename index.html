@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.O.R.A. | Contractual Oversight Risk Analyzer</title>
+    <meta name="description" content="Plataforma de IA para la generación automatizada de minutas contractuales en entidades públicas colombianas.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0C1222;
+            --bg-card: #151F32;
+            --primary: #2563EB;
+            --primary-hover: #1D4ED8;
+            --accent: #D4A843;
+            --text-main: #E8ECF4;
+            --text-muted: #94A3B8;
+            --border: #1E2D45;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), #B8860B);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        
+        .btn-outline:hover {
+            background: var(--bg-card);
+            border-color: var(--text-muted);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15), transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff, #93C5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* How it works */
+        .steps {
+            padding: 80px 0;
+            background-color: #0A0F1A;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 24px;
+            font-weight: bold;
+            font-family: 'Outfit';
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-text { flex: 1; }
+        .feature-img { 
+            flex: 1; 
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+        
+        .check-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+        
+        .check-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), #1E40AF);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-white:hover {
+            background: #f8fafc;
+        }
+
+        /* Footer */
+        footer {
+            background: #060B18;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
+            .hero-stats { gap: 20px; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container">
+        <div class="brand">
+            <div class="logo-icon">C</div>
+            C.O.R.A.
+        </div>
+        <div>
+            <a href="mailto:contacto@coratech.co" class="btn btn-outline">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero container">
+        <h1>La IA que revoluciona la<br>contratación pública</h1>
+        <p>Contractual Oversight Risk Analyzer (C.O.R.A.) es la primera plataforma diseñada para automatizar la generación de minutas contractuales en entidades públicas colombianas, garantizando cumplimiento normativo total.</p>
+        <div>
+            <a href="mailto:contacto@coratech.co" class="btn btn-primary" style="margin-right: 12px;">Solicitar Demo Comercial</a>
+            <a href="#como-funciona" class="btn btn-outline">Descubrir más</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-val">10s</div>
+                <div class="stat-label">Tiempo de Generación</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-val">< 1%</div>
+                <div class="stat-label">Errores de transcripción</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-val">100%</div>
+                <div class="stat-label">Trazabilidad Digital</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="steps">
+        <div class="container">
+            <h2 class="section-title">De horas a segundos en 3 pasos</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">1</div>
+                    <h3>Cargue de Expediente</h3>
+                    <p>El operador sube los 3 documentos fundamentales en formato PDF: Estudio Previo, Certificado de Disponibilidad Presupuestal (CDP) y Hoja de Vida.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">2</div>
+                    <h3>Análisis con IA</h3>
+                    <p>El motor de Inteligencia Artificial extrae los datos clave y valida automáticamente contra la normativa vigente (Ley 80/93, Decreto 1082/2015).</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">3</div>
+                    <h3>Minuta Lista</h3>
+                    <p>En solo 10 segundos, el sistema genera una minuta Word estructurada, con tablas de pago dinámicas, objeto, valor y cláusulas legales exactas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features container">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h2>Mitigación de Riesgos Legales</h2>
+                <p>No deje la coherencia normativa al azar. C.O.R.A. funciona como un auditor automático antes de la firma.</p>
+                <ul class="check-list">
+                    <li>Validación cruzada entre rubros del CDP y Estudios Previos.</li>
+                    <li>Verificación de Códigos UNSPSC en el portal de Colombia Compra Eficiente.</li>
+                    <li>Alerta temprana sobre posibles fraccionamientos de contratos.</li>
+                    <li>Generación de reportes de auditoría por expediente.</li>
+                </ul>
+            </div>
+            <div class="feature-img">
+                <div style="text-align: center;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="margin-bottom:16px;">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <h3>Seguridad y Cumplimiento</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h2>Escalabilidad Institucional</h2>
+                <p>Diseñado para soportar el volumen de cualquier alcaldía o gobernación a través de un modelo Multi-Tenant.</p>
+                <ul class="check-list">
+                    <li>Procesamiento masivo por lotes (procese decenas de contratos a la vez).</li>
+                    <li>Gestión basada en Roles: Administrador, Auditor y Operador.</li>
+                    <li>Plantillas de Word dinámicas y personalizables por entidad.</li>
+                    <li>Historial de procesos y métricas de desempeño en tiempo real.</li>
+                </ul>
+            </div>
+            <div class="feature-img">
+                <div style="text-align: center;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom:16px;">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    <h3>Arquitectura Cloud</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Transforme la gestión pública de su entidad</h2>
+            <p>Agende una demostración técnica y descubra cómo C.O.R.A. puede optimizar la contratación directa en su municipio o gobernación.</p>
+            <a href="mailto:contacto@coratech.co" class="btn btn-white">Contactar con Ventas</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="font-family: 'Outfit'; font-weight: 800; font-size: 20px; color: white; margin-bottom: 10px;">C.O.R.A.</div>
+            <p>Contractual Oversight Risk Analyzer v3.0</p>
+            <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 www.coratech.co. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
