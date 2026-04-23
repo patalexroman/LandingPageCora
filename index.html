@@ -74,6 +74,8 @@
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         
         .btn-primary {
@@ -89,11 +91,17 @@
         .btn-outline {
             border: 1px solid var(--border);
             color: var(--text-main);
+            background: transparent;
         }
         
         .btn-outline:hover {
             background: var(--bg-card);
             border-color: var(--text-muted);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
         }
 
         /* Hero */
@@ -127,182 +135,96 @@
             flex-wrap: wrap;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-val {
-            font-family: 'Outfit', sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .stat-item { text-align: center; }
+        .stat-val { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 800; color: var(--accent); }
+        .stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
         /* How it works */
-        .steps {
-            padding: 80px 0;
-            background-color: #0A0F1A;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 60px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 0 auto 24px;
-            font-weight: bold;
-            font-family: 'Outfit';
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
+        .steps { padding: 80px 0; background-color: #0A0F1A; }
+        .section-title { text-align: center; font-size: 36px; margin-bottom: 60px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 30px; text-align: center; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card-icon { width: 60px; height: 60px; background: rgba(37, 99, 235, 0.1); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 24px; font-weight: bold; font-family: 'Outfit'; }
+        .card h3 { font-size: 20px; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); font-size: 15px; }
 
         /* Features */
-        .features {
-            padding: 100px 0;
-        }
-
-        .feature-row {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-
-        .feature-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
+        .features { padding: 100px 0; }
+        .feature-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .feature-row:nth-child(even) { flex-direction: row-reverse; }
         .feature-text { flex: 1; }
-        .feature-img { 
-            flex: 1; 
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .feature-text h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .feature-text p {
-            color: var(--text-muted);
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .check-list {
-            list-style: none;
-        }
-        
-        .check-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-        }
-        
-        .check-list li::before {
-            content: '✓';
-            color: var(--accent);
-            font-weight: bold;
-        }
+        .feature-img { flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; height: 350px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .feature-text h2 { font-size: 32px; margin-bottom: 20px; }
+        .feature-text p { color: var(--text-muted); font-size: 16px; margin-bottom: 20px; }
+        .check-list { list-style: none; }
+        .check-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--text-main); }
+        .check-list li::before { content: '✓'; color: var(--accent); font-weight: bold; }
 
         /* CTA */
-        .cta {
-            background: linear-gradient(135deg, var(--primary), #1E40AF);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 18px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .btn-white {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .btn-white:hover {
-            background: #f8fafc;
-        }
+        .cta { background: linear-gradient(135deg, var(--primary), #1E40AF); padding: 80px 0; text-align: center; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 40px; }
+        .btn-white { background: white; color: var(--primary); }
+        .btn-white:hover { background: #f8fafc; }
 
         /* Footer */
-        footer {
-            background: #060B18;
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 14px;
+        footer { background: #060B18; padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; }
+
+        /* MODAL STYLES (Plan B por si no usan el enlace mágico) */
+        .modal-overlay {
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0, 0, 0, 0.8); 
+            backdrop-filter: blur(4px);
+            align-items: center; 
+            justify-content: center; 
+            z-index: 1000; 
         }
+        .modal-content {
+            background: var(--bg-card); 
+            padding: 32px; 
+            border-radius: 16px; 
+            width: 90%; 
+            max-width: 420px; 
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .modal-header h3 { font-size: 22px; }
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .btn-close:hover { color: white; }
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: inherit;
+            outline: none;
+        }
+        .form-control:focus { border-color: var(--primary); }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
             .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
             .hero-stats { gap: 20px; flex-direction: column; }
+            .nav-buttons { display: none; }
         }
     </style>
 </head>
@@ -313,8 +235,9 @@
             <div class="logo-icon">C</div>
             C.O.R.A.
         </div>
-        <div>
+        <div class="nav-buttons">
             <a href="mailto:contacto@coratech.co" class="btn btn-outline">Contacto</a>
+            <button id="btnOpenDemo" class="btn btn-primary">Acceso MVP</button>
         </div>
     </nav>
 
@@ -426,6 +349,70 @@
             <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 www.coratech.co. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <div id="demoModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Acceso Plataforma</h3>
+                <button id="btnCloseDemo" class="btn-close">&times;</button>
+            </div>
+            <p style="font-size:14px; color:var(--text-muted)">Para ingresar a la demostración MVP, introduzca la URL segura proporcionada por su administrador.</p>
+            
+            <input type="url" id="ngrokInput" class="form-control" placeholder="Ej: https://1234.ngrok-free.app">
+            
+            <button id="btnConnect" class="btn btn-primary" style="width:100%; margin-top:20px;">
+                Conectar al Servidor
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const btnOpen = document.getElementById('btnOpenDemo');
+        
+        // Elementos del modal
+        const modal = document.getElementById('demoModal');
+        const btnClose = document.getElementById('btnCloseDemo');
+        const btnConnect = document.getElementById('btnConnect');
+        const ngrokInput = document.getElementById('ngrokInput');
+
+        // Lógica del Botón "Acceso MVP"
+        btnOpen.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 1. Buscamos si hay un "Enlace Mágico" en la URL de arriba
+            const urlParams = new URLSearchParams(window.location.search);
+            let magicUrl = urlParams.get('demo');
+
+            if (magicUrl) {
+                // Si existe el enlace mágico, nos saltamos el modal y teletransportamos al usuario
+                if(!magicUrl.startsWith('http://') && !magicUrl.startsWith('https://')) {
+                    magicUrl = 'https://' + magicUrl;
+                }
+                window.location.href = magicUrl;
+            } else {
+                // PLAN B: Si entraron a www.coratech.co normal (sin el secreto), les mostramos el cuadrito
+                modal.style.display = 'flex';
+            }
+        });
+
+        // --- Lógica del Plan B (Modal) por si acaso ---
+        btnClose.addEventListener('click', () => modal.style.display = 'none');
+        window.addEventListener('click', (e) => {
+            if(e.target === modal) modal.style.display = 'none';
+        });
+
+        btnConnect.addEventListener('click', () => {
+            let url = ngrokInput.value.trim();
+            if(!url) {
+                alert('Por favor, ingrese la URL segura de demostración.');
+                return;
+            }
+            if(!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            window.location.href = url;
+        });
+    </script>
 
 </body>
 </html>
